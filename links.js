@@ -11,7 +11,7 @@
 
 var LINKS_DATA = [
   // { "caption": "Data Science Roadmap 2026", "url": "https://roadmap.sh/data-scientist" },
-  // { "caption": "Python for Beginners – Official Docs", "url": "https://docs.python.org/3/tutorial/" },
-  { "caption": "BDDN_Digital_Career_Blueprint", "url": "https://drive.google.com/file/d/1s1qp3B3goLqadEBDYLlRIyS01HdW_3lx/view?usp=sharing" },
-  // { "caption": "Imran Cv 2026", "url": "https://drive.google.com/file/d/1qAjTLyxwWnE4ekdyK1BKNPp3HCftkaJt/view?usp=drive_link" }
+  { "caption": "BDDN_Career_Prospectus", "url": "https://drive.google.com/file/d/17RwzC8iOrz0VxRV3OWk_Vdl2TyGocMBe/view?usp=drive_link" },
+  { "caption": "Engineer_Your_Digital_Career", "url": "https://drive.google.com/file/d/1GpCq1qd7azWM5Ki2tFcJCyxdWEQWGHh9/view?usp=drive_link" },
+  { "caption": "BDDN_Data_Analytics_Blueprint", "url": "https://drive.google.com/file/d/1i017U8qHYybahJ1UI5Dr__d_hTBPpoxD/view?usp=drive_link" }
 ];
