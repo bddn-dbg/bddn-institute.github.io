@@ -229,13 +229,13 @@ function openWhatsAppEnroll(e) {
 // ── GALLERY DATA & LIGHTBOX (Feature 1) ──────────────────────
 
 const GALLERY_IMAGES = [
-  { src: "images/gallery-classroom.png", caption: "BDDN Classroom Session" },
-  { src: "images/gallery-computer-lab.png", caption: "Fully Equipped Computer Lab" },
-  { src: "images/gallery-entrance.png", caption: "Welcome to BDDN Darbhanga" },
-  { src: "images/gallery-inauguration.png", caption: "BDDN Inauguration Ceremony" },
-  { src: "images/gallery-powerbi.png", caption: "Data Visualization & Power BI Training" },
-  { src: "images/gallery-training.png", caption: "Hands-on Student Training Session" },
-  { src: "images/gallery-workstations.png", caption: "Modern Practice Workstations" }
+  { src: "images/gallery-classroom.webp", caption: "BDDN Classroom Session" },
+  { src: "images/gallery-computer-lab.webp", caption: "Fully Equipped Computer Lab" },
+  { src: "images/gallery-entrance.webp", caption: "Welcome to BDDN Darbhanga" },
+  { src: "images/gallery-inauguration.webp", caption: "BDDN Inauguration Ceremony" },
+  { src: "images/gallery-powerbi.webp", caption: "Data Visualization & Power BI Training" },
+  { src: "images/gallery-training.webp", caption: "Hands-on Student Training Session" },
+  { src: "images/gallery-workstations.webp", caption: "Modern Practice Workstations" }
 ];
 
 let currentLightboxIndex = 0;
@@ -245,16 +245,18 @@ function initGallery() {
   if (!grid) return;
 
   grid.innerHTML = GALLERY_IMAGES.map((img, idx) => `
-    <div class="gallery-card" onclick="openLightbox(${idx})" role="listitem" tabindex="0" aria-label="${img.caption}">
-      <img src="${img.src}" alt="${img.caption}" loading="lazy" />
+    <div class="gallery-card" data-index="${idx}" role="listitem" tabindex="0" aria-label="${img.caption}">
+      <img src="${img.src}" alt="${img.caption}" loading="lazy" width="1024" height="1024" />
       <div class="gallery-overlay">
         <div class="gallery-caption">${img.caption}</div>
       </div>
     </div>
   `).join('');
 
-  // Keyboard accessibility for cards
-  grid.querySelectorAll('.gallery-card').forEach((card, idx) => {
+  // Click & Keyboard accessibility for cards
+  grid.querySelectorAll('.gallery-card').forEach((card) => {
+    const idx = parseInt(card.getAttribute('data-index'), 10);
+    card.addEventListener('click', () => openLightbox(idx));
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -435,8 +437,8 @@ function initVideos() {
 
   grid.innerHTML = YOUTUBE_VIDEOS.map(video => `
     <div class="video-card">
-      <div class="video-thumbnail-container" onclick="playVideo(this, '${video.id}')" aria-label="Play video: ${video.title}" tabindex="0">
-        <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title} thumbnail" loading="lazy" />
+      <div class="video-thumbnail-container" data-video-id="${video.id}" aria-label="Play video: ${video.title}" tabindex="0">
+        <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title} thumbnail" loading="lazy" width="320" height="180" />
         <div class="video-play-btn" role="button" aria-label="Play">▶</div>
       </div>
       <div class="video-info">
@@ -446,12 +448,14 @@ function initVideos() {
     </div>
   `).join('');
 
-  // Keyboard accessibility for play video
+  // Click & Keyboard accessibility for play video
   grid.querySelectorAll('.video-thumbnail-container').forEach(container => {
+    const videoId = container.getAttribute('data-video-id');
+    container.addEventListener('click', () => playVideo(container, videoId));
     container.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        container.click();
+        playVideo(container, videoId);
       }
     });
   });
@@ -471,6 +475,41 @@ function playVideo(container, videoId) {
 document.addEventListener('DOMContentLoaded', () => {
   initGallery();
   initVideos();
+
+  // Dynamic binding for Brochure download buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.course-syllabus-btn, .curr-download-btn');
+    if (btn) {
+      const course = btn.getAttribute('data-course');
+      openBrochureModal(course);
+    }
+  });
+
+  // Dynamic binding for FAQs
+  document.addEventListener('click', (e) => {
+    const q = e.target.closest('.faq-question');
+    if (q) {
+      toggleFaq(q);
+    }
+  });
+
+  // Tab switching listeners
+  const tabDa = document.getElementById('tab-da');
+  const tabDm = document.getElementById('tab-dm');
+  if (tabDa) tabDa.addEventListener('click', () => switchCurrTab('da'));
+  if (tabDm) tabDm.addEventListener('click', () => switchCurrTab('dm'));
+
+  // Form submission click listener
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) submitBtn.addEventListener('click', submitForm);
+
+  // WhatsApp form button click listener
+  const waFormBtn = document.getElementById('whatsappFormBtn');
+  if (waFormBtn) waFormBtn.addEventListener('click', openWhatsAppEnroll);
+
+  // Modal Send button click listener
+  const modalSendBtn = document.getElementById('modalSendBtn');
+  if (modalSendBtn) modalSendBtn.addEventListener('click', sendBrochureViaWhatsApp);
 
   // Lightbox Close / Prev / Next clicks
   const lbClose = document.getElementById('lightboxClose');
