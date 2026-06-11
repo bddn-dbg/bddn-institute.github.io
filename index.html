@@ -8,9 +8,8 @@
   <link rel="canonical" href="https://bddn.in/" />
   <title>BDDN – Bihar Digital Data &amp; Network | Data Analytics &amp; Digital Marketing in Darbhanga</title>
 
-  <!-- Primary SEO Meta Tags -->
   <meta name="description"
-    content="Darbhanga's #1 training institute for Data Analytics, Python, SQL, Power BI, and Digital Marketing. Enroll now for job-ready skills with placement assistance and industry certification." />
+    content="Darbhanga's leading training institute for Data Analytics, SQL, Python &amp; Digital Marketing. Master job-ready skills with placement assistance." />
   <meta name="keywords"
     content="Data Analytics Darbhanga, Digital Marketing Darbhanga, Python Course Darbhanga, SQL Training Bihar, Power BI course Darbhanga, BDDN, Bihar Digital Data and Network, placement assistance Bihar, best computer training center Darbhanga, SEO course Bihar, Google Ads training" />
   <meta name="author" content="BDDN – Bihar Digital Data &amp; Network" />
@@ -71,6 +70,7 @@
   <!-- Preconnect to external origins for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://img.youtube.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap"
     rel="stylesheet" />
@@ -83,6 +83,7 @@
 </head>
 
 <body>
+  <a href="#home" class="skip-link">Skip to content</a>
 
   <div id="toast" role="status" aria-live="polite"></div>
 
@@ -107,7 +108,7 @@
         <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
         <option value="Both Courses">Both Courses</option>
       </select>
-      <button class="modal-wa-btn" id="modalSendBtn" onclick="sendBrochureViaWhatsApp()">
+      <button class="modal-wa-btn" id="modalSendBtn">
         <svg viewBox="0 0 32 32" width="20" height="20" fill="none" aria-hidden="true">
           <path fill="#fff"
             d="M16 3C8.82 3 3 8.82 3 16c0 2.3.61 4.45 1.66 6.33L3 29l6.84-1.63A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" />
@@ -339,7 +340,7 @@
           </div>
           <div class="course-actions">
             <a href="#enroll" class="course-cta-btn" aria-label="Enroll in Data Analytics &amp; Python">Enroll Now →</a>
-            <button class="course-syllabus-btn" onclick="openBrochureModal('Data Analytics &amp; Python')"
+            <button class="course-syllabus-btn" data-course="Data Analytics &amp; Python"
               aria-label="Download Data Analytics syllabus">📥 Syllabus</button>
           </div>
         </article>
@@ -386,7 +387,7 @@
           <div class="course-actions">
             <a href="#enroll" class="course-cta-btn" aria-label="Enroll in Digital Marketing Specialist">Enroll Now
               →</a>
-            <button class="course-syllabus-btn" onclick="openBrochureModal('Digital Marketing Specialist')"
+            <button class="course-syllabus-btn" data-course="Digital Marketing Specialist"
               aria-label="Download Digital Marketing syllabus">📥 Syllabus</button>
           </div>
         </article>
@@ -406,10 +407,8 @@
 
       <!-- Tab Switcher -->
       <div class="curriculum-tabs" role="tablist" aria-label="Course selection">
-        <button class="curr-tab active" id="tab-da" role="tab" aria-selected="true" aria-controls="panel-da"
-          onclick="switchCurrTab('da')">📊 Data Analytics &amp; Python</button>
-        <button class="curr-tab" id="tab-dm" role="tab" aria-selected="false" aria-controls="panel-dm"
-          onclick="switchCurrTab('dm')">📣 Digital Marketing</button>
+        <button class="curr-tab active" id="tab-da" role="tab" aria-selected="true" aria-controls="panel-da">📊 Data Analytics &amp; Python</button>
+        <button class="curr-tab" id="tab-dm" role="tab" aria-selected="false" aria-controls="panel-dm">📣 Digital Marketing</button>
       </div>
 
       <!-- Data Analytics Panel -->
@@ -504,7 +503,7 @@
         </div>
 
         <div class="curr-outcomes">
-          <h4>🎯 After This Course, You'll Be Able To:</h4>
+          <h3>🎯 After This Course, You'll Be Able To:</h3>
           <ul>
             <li>✅ Analyze real business datasets independently</li>
             <li>✅ Build professional Power BI dashboards</li>
@@ -514,7 +513,7 @@
           </ul>
         </div>
         <div class="curr-cta-row">
-          <button class="curr-download-btn" onclick="openBrochureModal('Data Analytics &amp; Python')">📥 Download Full
+          <button class="curr-download-btn" data-course="Data Analytics &amp; Python">📥 Download Full
             Syllabus PDF</button>
           <a href="https://wa.me/919955889177?text=Hello%20BDDN!%20I%20want%20to%20know%20more%20about%20Data%20Analytics%20course."
             target="_blank" rel="noopener noreferrer" class="curr-wa-btn">💬 Ask a Question</a>
@@ -610,7 +609,7 @@
         </div>
 
         <div class="curr-outcomes">
-          <h4>🎯 After This Course, You'll Be Able To:</h4>
+          <h3>🎯 After This Course, You'll Be Able To:</h3>
           <ul>
             <li>✅ Run Google Ads campaigns profitably</li>
             <li>✅ Rank websites on Page 1 of Google</li>
@@ -620,7 +619,7 @@
           </ul>
         </div>
         <div class="curr-cta-row">
-          <button class="curr-download-btn" onclick="openBrochureModal('Digital Marketing Specialist')">📥 Download Full
+          <button class="curr-download-btn" data-course="Digital Marketing Specialist">📥 Download Full
             Syllabus PDF</button>
           <a href="https://wa.me/919955889177?text=Hello%20BDDN!%20I%20want%20to%20know%20more%20about%20Digital%20Marketing%20course."
             target="_blank" rel="noopener noreferrer" class="curr-wa-btn">💬 Ask a Question</a>
@@ -748,7 +747,7 @@
 
       <!-- Why Trust Us Pillars (Feature 3) -->
       <div class="why-trust-section" aria-label="Why trust BDDN">
-        <div class="section-eyebrow" style="margin-top: 60px;">Why Trust Us</div>
+        <div class="section-eyebrow">Why Trust Us</div>
         <h3 class="why-trust-heading">People Trust People — Not Just Numbers</h3>
         <p class="why-trust-sub">Even on Day 1, credibility starts with who we are and what we know.</p>
         <div class="why-trust-grid">
@@ -889,7 +888,7 @@
       <div class="faq-list" role="list">
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             What is the course fee?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -902,7 +901,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             Is there a placement guarantee?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -915,7 +914,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             Are classes online or offline?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -927,7 +926,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             What certificate will I get?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -942,7 +941,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             Who are the trainers?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -955,7 +954,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             What is the course duration?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -965,7 +964,7 @@
         </div>
 
         <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+          <button class="faq-question" aria-expanded="false">
             Can I attend a free demo before enrolling?
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -1124,12 +1123,12 @@
         <textarea id="message" name="message" rows="3"
           placeholder="Any questions or queries about our programs?"></textarea>
 
-        <button id="submitBtn" type="button" onclick="submitForm()" aria-label="Submit your enrollment request">
+        <button id="submitBtn" type="button" aria-label="Submit your enrollment request">
           Submit Enrollment Request
         </button>
 
         <a id="whatsappFormBtn" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-form-btn"
-          onclick="return openWhatsAppEnroll(event)" aria-label="Send enrollment via WhatsApp">
+          aria-label="Send enrollment via WhatsApp">
           <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true">
             <path fill="#fff"
