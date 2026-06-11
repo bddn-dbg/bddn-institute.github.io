@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="canonical" href="https://bddn.in/blog.html" />
+  <title>BDDN Career Blog | Data Analytics &amp; Digital Marketing Insights</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Read the latest tutorials, industry trends, and career roadmaps in Data Analytics, SQL, Python, Power BI, SEO, and Digital Marketing from BDDN Institute Darbhanga." />
+  <meta name="keywords"
+    content="BDDN blog, computer training Darbhanga, data analysis blog Bihar, learn digital marketing Darbhanga, Python coding Bihar, career guide Bihar, digital skills 2025" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bddn.in/blog.html" />
+  <meta property="og:title" content="BDDN Career Blog | Data Analytics &amp; Digital Marketing Insights" />
+  <meta property="og:description"
+    content="Stay updated with practical guides, tutorials, and career tips in Data Analytics and Digital Marketing curated for students in Bihar." />
+  <meta property="og:image" content="https://bddn.in/bddn_logo.webp" />
+
+  <!-- Fonts & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/webp" href="bddn_logo.webp" />
+
+  <style>
+    .blog-hero {
+      background: var(--ink);
+      padding: 90px 24px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .blog-hero-glow {
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(245,166,35,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blog-hero-badge {
+      display: inline-block;
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .blog-hero h1 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 span {
+      color: var(--gold);
+    }
+    .blog-hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-main {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 15px 35px rgba(245, 166, 35, 0.12);
+    }
+    .blog-tag {
+      background: rgba(245, 166, 35, 0.1);
+      color: var(--gold-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      align-self: flex-start;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .blog-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+    .blog-excerpt {
+      font-size: 0.95rem;
+      color: var(--slate);
+      line-height: 1.55;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .blog-date {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .blog-read-btn {
+      color: var(--gold-dark);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .blog-card:hover .blog-read-btn {
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-hero {
+        padding: 60px 20px 50px;
+      }
+      .blog-main {
+        margin: 40px auto;
+      }
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="nav-brand" aria-label="BDDN – Bihar Digital Data &amp; Network Home">
+      <img src="bddn_logo.webp" alt="BDDN Logo" width="38" height="38" loading="eager" />
+      <div class="nav-brand-text">
+        BDDN
+        <small>Bihar Digital Data &amp; Network</small>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks" role="menubar">
+      <a href="index.html#home" role="menuitem">Home</a>
+      <a href="index.html#courses" role="menuitem">Courses</a>
+      <a href="index.html#gallery" role="menuitem">Gallery</a>
+      <a href="index.html#about" role="menuitem">About</a>
+      <a href="index.html#faq" role="menuitem">FAQ</a>
+      <a href="blog.html" class="active" role="menuitem">Blog</a>
+      <a href="links.html" role="menuitem">Resources</a>
+      <a href="index.html#enroll" class="nav-cta" role="menuitem">Enroll Now</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks"
+      aria-label="Toggle Navigation Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="blog-hero">
+    <div class="blog-hero-glow" aria-hidden="true"></div>
+    <div class="blog-hero-badge">Knowledge Base</div>
+    <h1>BDDN Career <span>Blog</span></h1>
+    <p>Free guides, tutorials, and career roadmaps designed to help students and professionals in Bihar build high-paying digital careers.</p>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <main class="blog-main">
+    <div class="blog-grid" role="list">
+
+      <!-- Article 1 -->
+      <a href="blog/best-data-analytics-course-darbhanga.html" class="blog-card" role="listitem"
+        aria-label="Read: Best Data Analytics Course in Darbhanga 2026">
+        <span class="blog-tag">Data Analytics</span>
+        <h2 class="blog-title">Best Data Analytics Course in Darbhanga 2026</h2>
+        <p class="blog-excerpt">Looking for the top data analytics training in Darbhanga? Here's your complete guide to choosing the right curriculum, learning key tools like SQL and Power BI, and securing local and remote placement assistance.</p>
+        <div class="blog-meta">
+          <span class="blog-date">📅 June 2026</span>
+          <span class="blog-read-btn">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="blog/digital-marketing-job-bihar.html" class="blog-card" role="listitem"
+        aria-label="Read: How to Get a Job in Digital Marketing in Bihar">
+        <span class="blog-tag">Digital Marketing</span>
+        <h2 class="blog-title">How to Get a Job in Digital Marketing in Bihar</h2>
+        <p class="blog-excerpt">Digital marketing is booming across India — and Bihar is catching up fast. Here's a practical roadmap to mastering SEO, Meta Ads, and Google Ads, building a stellar portfolio of real projects, and landing your first agency job.</p>
+        <div class="blog-meta">
+          <span class="blog-date">📅 June 2026</span>
+          <span class="blog-read-btn">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="blog/python-vs-excel.html" class="blog-card" role="listitem"
+        aria-label="Read: Python vs Excel: Which Should You Learn First?">
+        <span class="blog-tag">Career Guide</span>
+        <h2 class="blog-title">Python vs Excel: Which Should You Learn First?</h2>
+        <p class="blog-excerpt">Both are powerful tools in a data analyst's toolkit. But for students new to data analytics, which tool should you start with? We break down the differences, ease of learning, and industry demand to give you an honest answer.</p>
+        <div class="blog-meta">
+          <span class="blog-date">📅 June 2026</span>
+          <span class="blog-read-btn">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="blog/top-5-skills-employers-2025.html" class="blog-card" role="listitem"
+        aria-label="Read: Top 5 Digital Skills Employers Want in 2026">
+        <span class="blog-tag">Career Guide</span>
+        <h2 class="blog-title">Top 5 Digital Skills Employers Want in 2026</h2>
+        <p class="blog-excerpt">The job market is changing rapidly with AI. What are the key technical and digital skills that companies are paying premiums for? Discover why SQL, Power BI, Google Ads, and Python are top skills in demand.</p>
+        <div class="blog-meta">
+          <span class="blog-date">📅 June 2026</span>
+          <span class="blog-read-btn">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- Article 5 -->
+      <a href="blog/why-bddn-best-institute-darbhanga.html" class="blog-card" role="listitem"
+        aria-label="Read: Why BDDN is the Best Institute in Darbhanga for Data &amp; Digital">
+        <span class="blog-tag">Institute News</span>
+        <h2 class="blog-title">Why BDDN is the Best Institute in Darbhanga</h2>
+        <p class="blog-excerpt">Darbhanga has many basic computer centers, but here is why BDDN's practical-first training model, expert founders with data science background, and dedicated career guidance set us apart as a premium learning center.</p>
+        <div class="blog-meta">
+          <span class="blog-date">📅 June 2026</span>
+          <span class="blog-read-btn">Read Article →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-brand">
+      BDDN
+      <small>Bihar Digital Data &amp; Network</small>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 <span>Bihar Digital Data &amp; Network</span>. All Rights Reserved.<br>
+      Empowering Bihar with Digital Skills &nbsp;|&nbsp;
+      <a href="mailto:institute@bddn.online" class="footer-email-link">institute@bddn.online</a>
+    </div>
+    <nav class="footer-links" aria-label="Footer Navigation">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <nav class="footer-links footer-legal" aria-label="Legal Navigation">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </nav>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>

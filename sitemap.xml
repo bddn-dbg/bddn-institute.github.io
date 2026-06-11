@@ -45,5 +45,54 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <!-- Resources -->
+  <url>
+    <loc>https://bddn.in/links.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- Blog Home -->
+  <url>
+    <loc>https://bddn.in/blog.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog Article 1 -->
+  <url>
+    <loc>https://bddn.in/blog/best-data-analytics-course-darbhanga.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Blog Article 2 -->
+  <url>
+    <loc>https://bddn.in/blog/digital-marketing-job-bihar.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Blog Article 3 -->
+  <url>
+    <loc>https://bddn.in/blog/python-vs-excel.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Blog Article 4 -->
+  <url>
+    <loc>https://bddn.in/blog/top-5-skills-employers-2025.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Blog Article 5 -->
+  <url>
+    <loc>https://bddn.in/blog/why-bddn-best-institute-darbhanga.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
 
