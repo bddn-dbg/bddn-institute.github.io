@@ -12,5 +12,5 @@
 var LINKS_DATA = [
   { "caption": "Data Science Roadmap 2026", "url": "https://roadmap.sh/data-scientist" },
   { "caption": "Python for Beginners – Official Docs", "url": "https://docs.python.org/3/tutorial/" },
-  { "caption": "Imran Cv 2026", "url": "https://drive.google.com/file/d/1qAjTLyxwWnE4ekdyK1BKNPp3HCftkaJt/view?usp=drive_link" }
+  // { "caption": "Imran Cv 2026", "url": "https://drive.google.com/file/d/1qAjTLyxwWnE4ekdyK1BKNPp3HCftkaJt/view?usp=drive_link" }
 ];
