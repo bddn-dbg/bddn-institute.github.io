@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /code.gs
+
+# Block AI training bots (optional – remove if you want AI visibility)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://bddn.in/sitemap.xml
