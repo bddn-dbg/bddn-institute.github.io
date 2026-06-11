@@ -874,6 +874,7 @@ body {
 .social-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 18px;
   border-radius: 10px;
@@ -882,6 +883,8 @@ body {
   text-decoration: none;
   transition: transform 0.25s, box-shadow 0.25s, background 0.25s, border-color 0.25s;
   font-family: 'DM Sans', sans-serif;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 .social-btn.linkedin {
@@ -1378,13 +1381,14 @@ body {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
-  height: 20px;
+  width: 48px;
+  height: 48px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 14px 10px;
   z-index: 250;
+  box-sizing: border-box;
 }
 
 .menu-toggle .bar {
@@ -1441,8 +1445,8 @@ body {
     display: block;
     padding: 14px;
     font-size: 1rem;
-    /* Bigger touch targets (min 44px) */
-    min-height: 44px;
+    /* Bigger touch targets (min 48px) */
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1700,6 +1704,9 @@ body {
   margin-top: 60px;
   border-top: 1px solid rgba(245,166,35,0.1);
   padding-top: 40px;
+}
+.why-trust-section .section-eyebrow {
+  margin-top: 60px;
 }
 .why-trust-heading {
   font-family: 'DM Sans', sans-serif;
