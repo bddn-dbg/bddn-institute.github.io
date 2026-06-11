@@ -12,6 +12,6 @@
 var LINKS_DATA = [
   // { "caption": "Data Science Roadmap 2026", "url": "https://roadmap.sh/data-scientist" },
   { "caption": "BDDN_Career_Prospectus", "url": "https://drive.google.com/file/d/17RwzC8iOrz0VxRV3OWk_Vdl2TyGocMBe/view?usp=drive_link" },
-  { "caption": "Engineer_Your_Digital_Career", "url": "https://drive.google.com/file/d/1GpCq1qd7azWM5Ki2tFcJCyxdWEQWGHh9/view?usp=drive_link" },
+  { "caption": "BDDN_Digital_Marketing_Blueprint", "url": "https://drive.google.com/file/d/1GpCq1qd7azWM5Ki2tFcJCyxdWEQWGHh9/view?usp=drive_link" },
   { "caption": "BDDN_Data_Analytics_Blueprint", "url": "https://drive.google.com/file/d/1i017U8qHYybahJ1UI5Dr__d_hTBPpoxD/view?usp=drive_link" }
 ];
