@@ -5,216 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0d1117" />
   <link rel="canonical" href="https://bddn.in/links.html" />
-  <title>Resources – BDDN | Bihar Digital Data &amp; Network</title>
-  <meta name="description" content="Curated resource links for students of BDDN — Data Analytics, Python, Digital Marketing and more." />
-  <meta name="robots" content="index, follow" />
+  <title>Free Resources – BDDN | Data Analytics &amp; Digital Marketing Guides</title>
 
+  <meta name="description" content="Download free career blueprints, course guides, and learning resources curated by BDDN Institute Darbhanga — Data Analytics, Python, Digital Marketing, and more." />
+  <meta name="keywords" content="BDDN resources, data analytics guide Darbhanga, digital marketing blueprint Bihar, free career resources, Python learning guide, BDDN career prospectus" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="BDDN – Bihar Digital Data &amp; Network" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bddn.in/links.html" />
+  <meta property="og:title" content="Free Resources – BDDN | Data Analytics &amp; Digital Marketing Guides" />
+  <meta property="og:description" content="Download free career blueprints, course guides, and learning resources curated by BDDN Institute Darbhanga." />
+  <meta property="og:image" content="https://bddn.in/bddn_logo.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="BDDN – Bihar Digital Data &amp; Network Logo" />
+  <meta property="og:site_name" content="BDDN – Bihar Digital Data &amp; Network" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://bddn.in/links.html" />
+  <meta name="twitter:title" content="Free Resources – BDDN | Data Analytics &amp; Digital Marketing Guides" />
+  <meta name="twitter:description" content="Download free career blueprints and learning guides curated by BDDN Institute Darbhanga." />
+  <meta name="twitter:image" content="https://bddn.in/bddn_logo.webp" />
+  <meta name="twitter:image:alt" content="BDDN Institute Resources Page" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bddn.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://bddn.in/links.html" }
+    ]
+  }
+  </script>
+
+  <!-- Non-blocking Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  </noscript>
+
+  <!-- Styles: all page-specific CSS is in style.css under "RESOURCES PAGE" section -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/webp" href="bddn_logo.webp" />
-
-  <style>
-    /* Hero */
-    .res-hero {
-      background: var(--ink);
-      padding: 72px 60px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .res-hero::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      height: 350px;
-      background: radial-gradient(ellipse, rgba(245,166,35,0.16) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .res-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(245,166,35,0.1);
-      border: 1px solid rgba(245,166,35,0.25);
-      color: var(--gold);
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 50px;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-    .res-hero h1 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-    .res-hero h1 span { color: var(--gold); }
-    .res-hero p {
-      color: rgba(255,255,255,0.45);
-      font-size: 1rem;
-      max-width: 480px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Search bar */
-    .res-search-bar {
-      max-width: 540px;
-      margin: 36px auto 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(255,255,255,0.14);
-      border-radius: 14px;
-      padding: 12px 18px;
-      position: relative;
-      z-index: 1;
-      transition: border-color 0.2s;
-    }
-    .res-search-bar:focus-within { border-color: rgba(245,166,35,0.5); }
-    .res-search-bar svg { color: rgba(255,255,255,0.3); flex-shrink: 0; }
-    #resSearch {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--white);
-      font-size: 0.95rem;
-      font-family: 'Instrument Sans', sans-serif;
-      width: 100%;
-    }
-    #resSearch::placeholder { color: rgba(255,255,255,0.3); }
-
-    /* Count */
-    .res-meta {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 28px 60px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .res-count {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .res-count strong { color: var(--ink); }
-
-    /* List */
-    .res-list {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 8px 60px 80px;
-    }
-
-    .res-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid #eef0f3;
-      text-decoration: none;
-      color: var(--ink);
-      transition: background 0.15s;
-      border-radius: 10px;
-      animation: fadeUp 0.3s ease both;
-    }
-    .res-item:first-child { border-top: 1px solid #eef0f3; }
-    .res-item:hover { background: rgba(245,166,35,0.04); padding-left: 10px; padding-right: 10px; margin: 0 -10px; }
-    .res-item:hover .res-item-arrow { opacity: 1; transform: translateX(0); }
-
-    .res-item-num {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--muted);
-      min-width: 24px;
-      text-align: right;
-      flex-shrink: 0;
-    }
-
-    .res-item-caption {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--ink);
-      flex: 1;
-      line-height: 1.4;
-    }
-
-    .res-item-domain {
-      font-size: 0.76rem;
-      color: var(--muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .res-item-arrow {
-      color: var(--gold-dark);
-      font-size: 0.9rem;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity 0.2s, transform 0.2s;
-      flex-shrink: 0;
-    }
-
-    /* Empty */
-    .res-empty {
-      text-align: center;
-      padding: 70px 20px;
-      color: var(--muted);
-    }
-    .res-empty-icon { font-size: 2.8rem; margin-bottom: 12px; }
-    .res-empty h3 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 900px) {
-      .res-hero { padding: 56px 24px 48px; }
-      .res-meta { padding: 20px 24px 4px; }
-      .res-list { padding: 0 24px 60px; }
-    }
-    @media (max-width: 500px) {
-      .res-item-domain { display: none; }
-    }
-  </style>
 </head>
 
 <body>
+  <!-- Skip link for keyboard accessibility -->
+  <a href="#resGrid" class="skip-link">Skip to resources</a>
+
   <div id="toast" role="status" aria-live="polite"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="nav-brand" aria-label="BDDN Home">
-      <img src="bddn_logo.webp" alt="BDDN Logo" width="38" height="38" loading="eager" />
-      <div class="nav-brand-text">BDDN<small>Bihar Digital Data &amp; Network</small></div>
+    <a href="index.html" class="nav-brand" aria-label="BDDN – Bihar Digital Data &amp; Network Home">
+      <img src="bddn_logo.webp" alt="BDDN Logo" width="38" height="38" loading="eager" fetchpriority="high" />
+      <div class="nav-brand-text">
+        BDDN
+        <small>Bihar Digital Data &amp; Network</small>
+      </div>
     </a>
     <div class="nav-links" id="navLinks" role="menubar">
       <a href="index.html#home" role="menuitem">Home</a>
@@ -224,51 +84,71 @@
       <a href="links.html" role="menuitem" aria-current="page">Resources</a>
       <a href="index.html#enroll" class="nav-cta" role="menuitem">Enroll Now</a>
     </div>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle Navigation Menu">
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks"
+      aria-label="Toggle Navigation Menu">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
   </nav>
 
   <!-- HERO -->
-  <header class="res-hero">
-    <div class="res-eyebrow">📚 Curated Resources</div>
-    <h1>BDDN <span>Resource Links</span></h1>
-    <p>Handpicked tools, guides, and references to boost your learning.</p>
-    <div class="res-search-bar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+  <header class="res-hero" aria-labelledby="res-heading">
+    <div class="res-eyebrow"><span aria-hidden="true">📚</span> Curated Resources</div>
+    <h1 id="res-heading">BDDN <span>Resource Links</span></h1>
+    <p>Free guides, blueprints, and references to boost your data and digital marketing career.</p>
+    <div class="res-search-bar" role="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
-      <input type="search" id="resSearch" placeholder="Search resources…" autocomplete="off" aria-label="Search resources" />
+      <input type="search" id="resSearch" placeholder="Search resources…" autocomplete="off"
+        aria-label="Search resources" />
     </div>
   </header>
 
-  <!-- META -->
+  <!-- RESOURCE COUNT -->
   <div class="res-meta">
     <div class="res-count" id="resCount" aria-live="polite">Loading…</div>
   </div>
 
-  <!-- LIST -->
+  <!-- RESOURCE LIST -->
   <main class="res-list" id="resGrid" aria-label="Resource links">
-    <p style="color:var(--muted);padding:40px 0;text-align:center">Loading…</p>
+    <p class="res-loading">Loading resources…</p>
   </main>
 
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
-    <div class="footer-brand">BDDN<small>Bihar Digital Data &amp; Network</small></div>
+    <div class="footer-brand">
+      BDDN
+      <small>Bihar Digital Data &amp; Network</small>
+    </div>
     <div class="footer-copy">
       &copy; 2026 <span>Bihar Digital Data &amp; Network</span>. All Rights Reserved.<br>
-      <a href="mailto:institute@bddn.online" class="footer-email-link">institute@bddn.online</a>
+      Empowering Bihar with Digital Skills &nbsp;|&nbsp;
+      <a href="mailto:institute@bddn.online" data-contact-href="email" data-contact-text="email"
+        class="footer-email-link" aria-label="Email BDDN">institute@bddn.online</a>
     </div>
     <nav class="footer-links" aria-label="Footer Navigation">
       <a href="index.html#home">Home</a>
       <a href="index.html#courses">Courses</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contact</a>
+    </nav>
+    <nav class="footer-links footer-legal" aria-label="Legal Navigation">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
     </nav>
   </footer>
 
-  <!-- Floating WhatsApp -->
+  <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/919955889177?text=Hello%2C%20I%20want%20to%20know%20more%20about%20BDDN%20courses."
-    target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat with BDDN on WhatsApp">
+    data-contact-href="whatsapp"
+    target="_blank" rel="noopener noreferrer"
+    class="wa-float" id="waFloat"
+    aria-label="Chat with BDDN on WhatsApp"
+    title="Chat with us on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path fill="#fff" d="M16 3C8.82 3 3 8.82 3 16c0 2.3.61 4.45 1.66 6.33L3 29l6.84-1.63A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3z"/>
       <path fill="#25D366" d="M21.89 19.1c-.3-.15-1.78-.87-2.05-.97-.28-.1-.48-.15-.68.15s-.78.97-.96 1.17c-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.41-1.48-.89-.8-1.49-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.18-.01-.37-.01-.57-.01s-.52.07-.8.37c-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.62.72.22 1.37.19 1.89.12.57-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.2-.57-.35z"/>
@@ -276,84 +156,9 @@
     <span class="wa-float-label">WhatsApp</span>
   </a>
 
-  <script src="links.js"></script>
-  <script>
-    const ICONS = {
-      python:'🐍', sql:'🗄️', 'power bi':'📊', tableau:'📊', excel:'📋',
-      data:'📈', seo:'🔍', marketing:'📣', google:'🔍', youtube:'🎬',
-      video:'🎬', book:'📚', guide:'📚', roadmap:'📚', course:'🎓',
-      tool:'🛠️', javascript:'🟨', html:'🌐', css:'🎨', ai:'🤖', ml:'🤖'
-    };
-
-    function getIcon(caption) {
-      const c = caption.toLowerCase();
-      for (const [kw, icon] of Object.entries(ICONS)) {
-        if (c.includes(kw)) return icon;
-      }
-      return '🔗';
-    }
-
-    function getDomain(url) {
-      try { return new URL(url).hostname.replace('www.', ''); }
-      catch { return url; }
-    }
-
-    let all = [];
-
-    function render(list) {
-      const grid  = document.getElementById('resGrid');
-      const count = document.getElementById('resCount');
-
-      if (!list.length) {
-        grid.innerHTML = `
-          <div class="res-empty" role="status">
-            <div class="res-empty-icon">${all.length ? '🔍' : '📋'}</div>
-            <h3>${all.length ? 'No results found' : 'No links yet'}</h3>
-            <p>${all.length ? 'Try a different search term.' : 'Resources will appear here soon!'}</p>
-          </div>`;
-        count.innerHTML = '<strong>0</strong> resources';
-        return;
-      }
-
-      count.innerHTML = `<strong>${list.length}</strong> link${list.length !== 1 ? 's' : ''}`;
-      grid.innerHTML = list.map((item, i) => `
-        <a class="res-item" href="${item.url}" target="_blank" rel="noopener noreferrer"
-          style="animation-delay:${i * 0.03}s"
-          aria-label="${item.caption} — opens in new tab">
-          <span class="res-item-num">${i + 1}</span>
-          <span class="res-item-caption">${item.caption}</span>
-          <span class="res-item-domain">${getDomain(item.url)}</span>
-          <span class="res-item-arrow">→</span>
-        </a>`).join('');
-    }
-
-    document.getElementById('resSearch').addEventListener('input', function () {
-      const q = this.value.toLowerCase().trim();
-      render(q ? all.filter(l => l.caption.toLowerCase().includes(q) || l.url.toLowerCase().includes(q)) : all);
-    });
-
-    if (typeof LINKS_DATA !== 'undefined' && Array.isArray(LINKS_DATA)) {
-      all = LINKS_DATA;
-      render(all);
-    } else {
-      document.getElementById('resGrid').innerHTML = `
-        <div class="res-empty" role="alert">
-          <div class="res-empty-icon">⚠️</div>
-          <h3>Could not load resources</h3>
-          <p>Check that <strong>links.js</strong> exists in the same folder.</p>
-        </div>`;
-      document.getElementById('resCount').textContent = 'Error';
-    }
-
-    // Mobile nav
-    const toggle = document.getElementById('menuToggle');
-    const nav    = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      const open = !nav.classList.contains('active');
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.classList.toggle('active', open);
-      nav.classList.toggle('active', open);
-    });
-  </script>
+  <!-- JS: defer all scripts to avoid render-blocking -->
+  <script src="contact_config.js" defer></script>
+  <script src="links.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

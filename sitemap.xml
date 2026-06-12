@@ -10,27 +10,7 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Courses section anchor -->
-  <url>
-    <loc>https://bddn.in/#courses</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- About section anchor -->
-  <url>
-    <loc>https://bddn.in/#about</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <!-- Contact section anchor -->
-  <url>
-    <loc>https://bddn.in/#contact</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <!-- Privacy Policy -->
   <url>
     <loc>https://bddn.in/privacy-policy.html</loc>

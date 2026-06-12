@@ -168,7 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ── WHATSAPP ENROLL ─────────────────────────────────────
 
-const WHATSAPP_NUMBER = '919955889177'; // Country code + number, no +
+/**
+ * Lazily reads the WhatsApp number from contact_config.js at call time.
+ * Falls back to the hardcoded number if the config hasn't loaded yet.
+ * @returns {string} E.164 format without '+', e.g. '919955889177'
+ */
+function getWhatsAppNumber() {
+  return (window.BDDN_CONTACT && window.BDDN_CONTACT.whatsapp) || '919955889177';
+}
 
 /**
  * Reads the enrollment form values, validates them, and opens a
@@ -221,7 +228,7 @@ function openWhatsAppEnroll(e) {
   if (message) text += `💬 *Message:* ${message}\n`;
   text += '\nPlease get in touch with me. Thank you!';
 
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener,noreferrer');
   return false;
 }
@@ -365,7 +372,7 @@ function sendBrochureViaWhatsApp() {
   text += `📚 *Syllabus Requested:* ${course}\n\n`;
   text += `Please send me the PDF link on WhatsApp. Thank you!`;
 
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener,noreferrer');
   
   // Auto-close modal and reset fields
@@ -462,8 +469,10 @@ function initVideos() {
 }
 
 function playVideo(container, videoId) {
+  const videoTitle = container.getAttribute('aria-label') || 'BDDN YouTube Video';
   container.innerHTML = `
     <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+            title="${videoTitle}"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
     </iframe>
@@ -499,9 +508,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (tabDa) tabDa.addEventListener('click', () => switchCurrTab('da'));
   if (tabDm) tabDm.addEventListener('click', () => switchCurrTab('dm'));
 
-  // Form submission click listener
-  const submitBtn = document.getElementById('submitBtn');
-  if (submitBtn) submitBtn.addEventListener('click', submitForm);
+  // Form submission event listener
+  const enrollForm = document.getElementById('enrollForm');
+  if (enrollForm) {
+    enrollForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitForm();
+    });
+  }
 
   // WhatsApp form button click listener
   const waFormBtn = document.getElementById('whatsappFormBtn');
@@ -556,3 +570,94 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// ── RESOURCES PAGE (links.html) ─────────────────────────
+// Guard: only runs when #resGrid exists (i.e. on links.html)
+
+(function initResourcesPage() {
+  const resGrid  = document.getElementById('resGrid');
+  const resCount = document.getElementById('resCount');
+  const resSearch = document.getElementById('resSearch');
+
+  if (!resGrid || !resCount || !resSearch) return; // Not on resources page
+
+  /** Maps keywords in a link caption to a display emoji */
+  const ICONS = {
+    python: '🐍', sql: '🗄️', 'power bi': '📊', tableau: '📊', excel: '📋',
+    data: '📈', seo: '🔍', marketing: '📣', google: '🔍', youtube: '🎬',
+    video: '🎬', book: '📚', guide: '📚', roadmap: '📚', course: '🎓',
+    tool: '🛠️', javascript: '🟨', html: '🌐', css: '🎨', ai: '🤖', ml: '🤖',
+    blueprint: '📋', career: '🚀', prospectus: '📄'
+  };
+
+  function getIcon(caption) {
+    const c = caption.toLowerCase();
+    for (const [kw, icon] of Object.entries(ICONS)) {
+      if (c.includes(kw)) return icon;
+    }
+    return '🔗';
+  }
+
+  function getDomain(url) {
+    try { return new URL(url).hostname.replace('www.', ''); }
+    catch { return url; }
+  }
+
+  /** Formats underscore/hyphen separated words into human-readable title */
+  function formatCaption(caption) {
+    return caption.replace(/[_-]/g, ' ');
+  }
+
+  let allLinks = [];
+
+  function renderLinks(list) {
+    if (!list.length) {
+      resGrid.innerHTML = `
+        <div class="res-empty" role="status">
+          <div class="res-empty-icon">${allLinks.length ? '🔍' : '📋'}</div>
+          <h3>${allLinks.length ? 'No results found' : 'No links yet'}</h3>
+          <p>${allLinks.length ? 'Try a different search term.' : 'Resources will appear here soon!'}</p>
+        </div>`;
+      resCount.innerHTML = '<strong>0</strong> resources';
+      return;
+    }
+
+    resCount.innerHTML = `<strong>${list.length}</strong> link${list.length !== 1 ? 's' : ''}`;
+    resGrid.innerHTML = list.map((item, i) => {
+      const displayCaption = formatCaption(item.caption);
+      return `
+        <a class="res-item" href="${item.url}" target="_blank" rel="noopener noreferrer"
+          style="animation-delay:${i * 0.03}s"
+          aria-label="${displayCaption} — opens in new tab">
+          <span class="res-item-num">${i + 1}</span>
+          <span class="res-item-icon" aria-hidden="true">${getIcon(displayCaption)}</span>
+          <span class="res-item-caption">${displayCaption}</span>
+          <span class="res-item-domain">${getDomain(item.url)}</span>
+          <span class="res-item-arrow" aria-hidden="true">→</span>
+        </a>`;
+    }).join('');
+  }
+
+  resSearch.addEventListener('input', function () {
+    const q = this.value.toLowerCase().trim();
+    renderLinks(q
+      ? allLinks.filter(l =>
+          l.caption.toLowerCase().includes(q) ||
+          l.url.toLowerCase().includes(q)
+        )
+      : allLinks
+    );
+  });
+
+  if (typeof LINKS_DATA !== 'undefined' && Array.isArray(LINKS_DATA)) {
+    allLinks = LINKS_DATA;
+    renderLinks(allLinks);
+  } else {
+    resGrid.innerHTML = `
+      <div class="res-empty" role="alert">
+        <div class="res-empty-icon">⚠️</div>
+        <h3>Could not load resources</h3>
+        <p>Check that <strong>links.js</strong> exists in the same folder.</p>
+      </div>`;
+    resCount.textContent = 'Error';
+  }
+})();
