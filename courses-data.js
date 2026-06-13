@@ -5,7 +5,7 @@
 const BDDN_COURSES = [
   {
     id: "data-analytics",
-    name: "Data Analytics",
+    name: "Data Analytics & Python",
     duration: "6 Months",
     summary: "Learn Excel, SQL, Python, Power BI, and Analytics tools used by industry professionals.",
     description: "Learn Excel, SQL, Python, Power BI, and Analytics tools used by industry professionals.",
