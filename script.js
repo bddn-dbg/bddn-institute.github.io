@@ -273,32 +273,35 @@ function initGallery() {
   });
 }
 
+// Cached lightbox DOM references (queried once at init, not on every open)
+let _lbBox = null, _lbImg = null, _lbCaption = null;
+
+function initLightboxRefs() {
+  _lbBox     = document.getElementById('lightbox');
+  _lbImg     = document.getElementById('lightboxImg');
+  _lbCaption = document.getElementById('lightboxCaption');
+}
+
 function openLightbox(index) {
   currentLightboxIndex = index;
-  const lightbox = document.getElementById('lightbox');
-  const img = document.getElementById('lightboxImg');
-  const caption = document.getElementById('lightboxCaption');
-
-  if (!lightbox || !img || !caption) return;
+  if (!_lbBox || !_lbImg || !_lbCaption) return;
 
   const data = GALLERY_IMAGES[index];
-  img.src = data.src;
-  img.alt = data.caption;
-  caption.textContent = data.caption;
+  _lbImg.src = data.src;
+  _lbImg.alt = data.caption;
+  _lbCaption.textContent = data.caption;
 
-  lightbox.setAttribute('aria-hidden', 'false');
-  lightbox.style.display = 'flex';
+  _lbBox.setAttribute('aria-hidden', 'false');
+  _lbBox.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   const closeBtn = document.getElementById('lightboxClose');
   if (closeBtn) closeBtn.focus();
 }
 
 function closeLightbox() {
-  const lightbox = document.getElementById('lightbox');
-  if (!lightbox) return;
-
-  lightbox.setAttribute('aria-hidden', 'true');
-  lightbox.style.display = 'none';
+  if (!_lbBox) return;
+  _lbBox.setAttribute('aria-hidden', 'true');
+  _lbBox.style.display = 'none';
   document.body.style.overflow = '';
 }
 
@@ -479,10 +482,258 @@ function playVideo(container, videoId) {
   `;
 }
 
+// ── SCROLL NAVBAR ───────────────────────────────────────
+function initScrollNavbar() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  
+  function checkScroll() {
+    if (window.scrollY > 15) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+}
+
+// ── DETECT SUBFOLDER DEPTH ──────────────────────────────
+function getRootPath() {
+  const path = window.location.pathname;
+  if (path.includes('/blog/') || path.includes('/courses/')) {
+    return '../';
+  }
+  return '';
+}
+
+// ── UNIVERSAL NAVBAR PATH PATCHER ────────────────────────
+function initUniversalNavbar() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  const rootPath = getRootPath();
+  
+  // Detect if we are on the homepage
+  const path = window.location.pathname;
+  const isHomepage = !!document.getElementById('home');
+
+  // 1. Fix Brand Link and Brand Logo Image
+  const brandLink = navbar.querySelector('.nav-brand');
+  if (brandLink) {
+    brandLink.href = isHomepage ? '#home' : rootPath + 'index.html';
+    const brandImg = brandLink.querySelector('img');
+    if (brandImg) {
+      let src = brandImg.getAttribute('src');
+      if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+        const filename = src.substring(src.lastIndexOf('/') + 1);
+        brandImg.src = rootPath + filename;
+      }
+    }
+  }
+
+  // 2. Fix Links inside nav-links
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      const text = link.textContent.trim().toLowerCase();
+
+      if (href.startsWith('#')) {
+        if (href === '#enroll' && path.includes('/courses/')) {
+          // Keep local enroll scroll for course pages
+          return;
+        }
+        if (isHomepage) {
+          // Keep as local scroll on homepage
+          return;
+        } else {
+          // Navigate to homepage section
+          link.href = rootPath + 'index.html' + href;
+        }
+      } else {
+        // It's a page link like 'blog.html' or 'links.html'
+        if (!href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+          const filename = href.substring(href.lastIndexOf('/') + 1);
+          link.href = rootPath + filename;
+        }
+      }
+
+      // Add 'active' class to current page link
+      const currentPageName = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+      const linkPageName = link.getAttribute('href').split('#')[0].split('/').pop();
+      
+      if (currentPageName === linkPageName) {
+        link.classList.add('active');
+      } else {
+        if (linkPageName && linkPageName !== 'index.html') {
+          link.classList.remove('active');
+        }
+      }
+    });
+  }
+}
+
+// ── MEGA MENU INJECTOR ──────────────────────────────────
+function initMegaMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (!navLinks) return;
+
+  const coursesLink = Array.from(navLinks.querySelectorAll('a')).find(
+    el => el.textContent.trim().toLowerCase().startsWith('courses')
+  );
+  if (!coursesLink) return;
+
+  const coursesData = window.BDDN_COURSES || [];
+  const activeCourses = coursesData.filter(c => c.active);
+
+  const categories = {};
+  activeCourses.forEach(course => {
+    if (!categories[course.category]) {
+      categories[course.category] = [];
+    }
+    categories[course.category].push(course);
+  });
+
+  const rootPath = getRootPath();
+  let menuHtml = `<div class="mega-menu-columns">`;
+
+  for (const [category, list] of Object.entries(categories)) {
+    menuHtml += `
+      <div class="mega-menu-col">
+        <div class="mega-menu-category">${category}</div>
+    `;
+    list.forEach(course => {
+      const courseUrl = rootPath + course.url;
+      menuHtml += `
+        <a href="${courseUrl}" class="mega-menu-item">
+          <span class="mega-item-name">${course.name}</span>
+          <span class="mega-item-summary">${course.summary}</span>
+        </a>
+      `;
+    });
+    menuHtml += `</div>`;
+  }
+  menuHtml += `</div>`;
+
+  const dropdownContainer = document.createElement('div');
+  dropdownContainer.className = 'nav-dropdown';
+  dropdownContainer.role = 'none';
+
+  const triggerButton = document.createElement('button');
+  triggerButton.className = 'nav-dropdown-trigger';
+  triggerButton.setAttribute('aria-expanded', 'false');
+  triggerButton.setAttribute('aria-haspopup', 'true');
+  triggerButton.setAttribute('role', 'menuitem');
+  triggerButton.innerHTML = `Courses <span class="arrow-down">▼</span>`;
+
+  const megaMenuPanel = document.createElement('div');
+  megaMenuPanel.className = 'mega-menu';
+  megaMenuPanel.setAttribute('role', 'menu');
+  megaMenuPanel.setAttribute('aria-label', 'Courses Mega Menu');
+  megaMenuPanel.innerHTML = menuHtml;
+
+  dropdownContainer.appendChild(triggerButton);
+  dropdownContainer.appendChild(megaMenuPanel);
+
+  coursesLink.parentNode.replaceChild(dropdownContainer, coursesLink);
+
+  triggerButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const isExpanded = triggerButton.getAttribute('aria-expanded') === 'true';
+    triggerButton.setAttribute('aria-expanded', String(!isExpanded));
+    dropdownContainer.classList.toggle('active');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdownContainer.contains(e.target)) {
+      triggerButton.setAttribute('aria-expanded', 'false');
+      dropdownContainer.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      triggerButton.setAttribute('aria-expanded', 'false');
+      dropdownContainer.classList.remove('active');
+    }
+  });
+}
+
+// ── HOMEPAGE COURSES CARDS GENERATOR ─────────────────────
+function initHomepageCourses() {
+  const courseGrid = document.querySelector('#courses .course-grid');
+  if (!courseGrid) return;
+
+  const coursesData = window.BDDN_COURSES || [];
+  const activeCourses = coursesData.filter(c => c.active);
+
+  const rootPath = getRootPath();
+  const categoryIcons = {
+    "Data & AI": "📊",
+    "Marketing": "📣",
+    "Business Intelligence": "💼"
+  };
+
+  courseGrid.innerHTML = activeCourses.map(course => {
+    const icon = categoryIcons[course.category] || "🎓";
+    const courseUrl = rootPath + course.url;
+    return `
+      <article class="course-card" aria-labelledby="course-${course.id}">
+        <div class="course-icon-wrap"><span role="img" aria-label="${course.category}">${icon}</span></div>
+        <h3 id="course-${course.id}">${course.name}</h3>
+        <p class="course-summary">${course.summary}</p>
+        <div class="course-duration">
+          <span class="duration-icon">🕐</span>
+          <strong>Duration:</strong> ${course.duration}
+        </div>
+        <div class="course-actions">
+          <a href="${courseUrl}" class="course-cta-btn" aria-label="Learn more about ${course.name}">Learn More →</a>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// ── AUTO-POPULATE SELECT OPTIONS FOR ENROLLMENT ─────────
+function initCourseSelectDropdowns() {
+  const courseDropdowns = [
+    document.getElementById('course'),
+    document.getElementById('modal-course')
+  ];
+
+  const coursesData = window.BDDN_COURSES || [];
+  const activeCourses = coursesData.filter(c => c.active);
+
+  courseDropdowns.forEach(dropdown => {
+    if (!dropdown) return;
+    const currentValue = dropdown.value;
+    dropdown.innerHTML = '<option value="" disabled selected>Select a Course...</option>' + 
+      activeCourses.map(course => `
+        <option value="${course.name}">${course.name}</option>
+      `).join('');
+    if (currentValue) {
+      dropdown.value = currentValue;
+    }
+  });
+}
+
 // ── DOCUMENT INITIALIZATION & EVENT REGISTERING ───────────────
 
 document.addEventListener('DOMContentLoaded', () => {
+  initUniversalNavbar();
+  initScrollNavbar();
+  initMegaMenu();
+  initHomepageCourses();
+  initCourseSelectDropdowns();
   initGallery();
+  initLightboxRefs(); // Cache lightbox DOM refs after gallery is initialized
   initVideos();
 
   // Dynamic binding for Brochure download buttons

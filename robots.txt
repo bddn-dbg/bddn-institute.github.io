@@ -2,11 +2,17 @@ User-agent: *
 Allow: /
 Disallow: /code.gs
 
-# Block AI training bots (optional – remove if you want AI visibility)
+# Block AI training bots
+# GPTBot = OpenAI training crawler
 User-agent: GPTBot
 Disallow: /
 
+# Google-Extended = Gemini/Bard training data
 User-agent: Google-Extended
+Disallow: /
+
+# CCBot = Common Crawl (used by many AI trainers)
+User-agent: CCBot
 Disallow: /
 
 Sitemap: https://bddn.in/sitemap.xml
