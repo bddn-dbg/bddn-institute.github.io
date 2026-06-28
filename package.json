@@ -1,0 +1,15 @@
+{
+  "name": "bdd-bihar-digital-data",
+  "version": "1.0.0",
+  "description": "Bihar Digital Data – BDD Website with Neon DB enrollment backend",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "preview": "npx serve . -p 4000"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.0"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}
